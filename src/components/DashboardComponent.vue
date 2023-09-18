@@ -5,6 +5,9 @@ import NewChatIcon from './icons/NewChatIcon.vue'
 import HamburguerIcon from './icons/HamburguerIcon.vue'
 import SearchIcon from './icons/SearchIcon.vue'
 import FilterIcon from './icons/FilterIcon.vue'
+import { useUserStore } from '../stores/userStore'
+
+const userStore = useUserStore()
 </script>
 <!-- 
     - [ ] Router to config/profile 
@@ -18,11 +21,7 @@ import FilterIcon from './icons/FilterIcon.vue'
   <div class="bg-slate-800">
     <div class="flex justify-end gap-[26px] pl-3 pr-6 py-3 bg-slate-600">
       <button class="w-10 mr-auto">
-        <img
-          class="rounded-full"
-          src="https://media-lis1-1.cdn.whatsapp.net/v/t61.24694-24/345137231_548825390511657_3951930926494342112_n.jpg?ccb=11-4&oh=01_AdQl599ZgqGaPN1tNS1fB2K03ff4mo_eSLj4FFj0cpIrgQ&oe=6514F47B&_nc_sid=000000&_nc_cat=101"
-          alt=""
-        />
+        <img class="rounded-full" :src="userStore.user.pp" alt="" />
       </button>
       <button>
         <CommunityIcon />
