@@ -3,15 +3,19 @@ import { ref } from 'vue'
 import { useChatListStore } from '../stores/chatListStore'
 import ArchiveIcon from './icons/ArchiveIcon.vue'
 import PinIcon from './icons/PinIcon.vue'
+import { useRoomStore } from '@/stores/roomStore'
+import { useUserStore } from '@/stores/userStore'
 const haveArchived = ref(true)
 const chatListStore = useChatListStore()
+const roomStore = useRoomStore()
+const authStore = useUserStore()
 </script>
 <!-- 
     - [ ] Router to config
     - [ ] Behavior to pin / open opts
 -->
 <template>
-  <div class="max-h-[84vh] overflow-y-scroll flex-row">
+  <div class="h-[84vh] overflow-y-scroll flex-row">
     <div v-if="haveArchived" class="flex my-4 items-end">
       <ArchiveIcon class="w-2/12" />
       <div class="w-10/12 flex justify-between mr-5">
@@ -24,7 +28,7 @@ const chatListStore = useChatListStore()
       class="flex w-full"
       v-for="(chat, chatIdx) in chatListStore.chatList"
       :key="chatIdx"
-      @click="chatListStore.selectChat(chat)"
+      @click="roomStore.selectRoom([chat, authStore.user], [], false, false, null)"
     >
       <div class="w-2/12 flex items-center justify-center pt-3">
         <img :src="chat.pp" alt="" class="w-12 h-12 rounded-full" />

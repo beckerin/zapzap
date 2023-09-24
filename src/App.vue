@@ -14,13 +14,13 @@ userStore.setUser({
 } as UserInfo)
 </script>
 <template>
-  <main>
-    <div>
+  <main class="bg-slate-900 text-white flex py-[23px] px-6 w-full">
+    <div class="w-4/12">
       <Dashboard />
       <ChatList />
       <ConfigMenu />
     </div>
-    <Chat />
+    <Chat class="w-8/12" />
     <Profile />
   </main>
 </template>
